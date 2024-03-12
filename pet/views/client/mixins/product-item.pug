@@ -1,0 +1,14 @@
+//- Trang chi tiết sản phẩm
+mixin product-item(pet)
+    .section-2__item.section-2__item--three
+        .section-2__image
+            a(href="#")
+                img(src=pet.thumbnail alt=pet.title)
+        .section-2__content
+            h3.section-2__title
+                a(href="#" style="text-decoration: none") #{pet.title}
+            .section-2__info
+                .section-2__info-item Giống: <span>#{pet.gender}</span>
+                .section-2__info-item Tuổi: <span>#{pet.age}</span> tháng
+            .section-2__price #{pet.price}
+

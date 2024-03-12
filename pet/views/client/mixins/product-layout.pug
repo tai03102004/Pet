@@ -1,0 +1,65 @@
+include product-item.pug
+include pagination.pug
+
+mixin product-grid(products) 
+    .layout-product 
+        .container 
+            .layout-product__wrap 
+                .layout-product__left 
+                    .filters 
+                        .filters__title 
+                            img(src="./client/images/filter.svg")
+                            span Bộ lọc
+                        .filters__list 
+                            .filters__item 
+                                .filters__item-title Giống
+                                .filters__item-box
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="giong" value="Đực" id="duc")
+                                        label(for="duc") Đực
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="giong" value="Cái" id="cai")
+                                        label(for="cai") Cái   
+                            .filters__item 
+                                .filters__item-title Kích thước
+                                .filters__item-box
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="kich thuoc" value="nho" id="nho")
+                                        label(for="duc") Nhỏ
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="kich thuoc" value="vua" id="vừa")
+                                        label(for="cai") Vừa  
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="kich thuoc" value="lon" id="lớn")
+                                        label(for="cai") Lớn  
+                            .filters__item 
+                                .filters__item-title Màu sắc
+                                .filters__item-box
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="mau-sac" value="xam" id="duc")
+                                        label(for="xam") Xám
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="mau-sac" value="den" id="cai")
+                                        label(for="den") Đen  
+                                    .filters__item-choose 
+                                        input(type="checkbox" name="mau-sac" value="trang" id="lớn")
+                                        label(for="trang") Trắng  
+                .layout-product__right 
+                    .box-head
+                        .box-head__left
+                            .box-head__filterDog
+                                .box-head__title Chó nhỏ
+                                .box-head__filter
+                                    img(src="./client/images/filter.svg")
+                            .section-2__wrap
+                                each pet in products
+                                    +product-item(pet)
+                            .section-2__button-button
+                                a(href="#" class="button") Xem thêm 
+                                    <i class="fa-solid fa-chevron-right"></i>
+
+                            //- End Layout Product
+
+                            +initPagination(pagination)
+    script(src="/client/js/untils.js") 
+    script(src="/client/js/pagination.js") 

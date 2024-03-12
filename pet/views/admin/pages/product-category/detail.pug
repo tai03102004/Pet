@@ -1,0 +1,55 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+block main
+    +alert-success(5000)
+    +alert-error(5000)
+    .main-detail
+        .container
+                .grid.second-nav
+                    .column-xs-12
+                        nav
+                            ol.breadcrumb-list
+                                li.breadcrumb-item.active 
+                                    if (product.title)
+                                        h1 #{product.title}
+
+    .product
+        .inner-status 
+            if (product.status)
+                div(class="inner-product-status")
+                    span Trạng thái :
+                    if (product.status === "active")
+                        span(class="badge badge-success" ,button-change-status,data-status = product.status , data-id = product.id , id="product-active") Hoạt động
+                    else
+                        span(class="badge badge-danger",button-change-status,data-status = product.status , data-id = product.id , id="product-inactive") Dừng hoạt động
+        .product-detail 
+            .product-info
+                if(role.permissions.includes("products_view"))
+                    if (product.price)
+                        div(class="desc") Giá
+                            span.dots :   
+                            <b>#{product.price}$</b>
+                    if (product.discountPercentage)
+                        div(class="desc", id="product-discountPercentage") Giảm giá 
+                            span.dots :   
+                            <b>#{product.discountPercentage}%</b>
+                    if (product.stock)
+                        div(class="desc", id="product-stock") Còn lại 
+                            span.dots :   
+                            <b>#{product.stock}</b>
+                    if (product.position)
+                        div(class="desc", id="product-position") Vị trí 
+                            span.dots :   
+                            <b>#{product.position}</b>
+                    if (product.description)
+                        div(class="description")
+                            p(style="color:grey") !{product.description}
+            .product-image
+                img(src=product.thumbnail, alt="image")
+        form(
+            id="form-change-status"
+            method="POST"
+            action=""
+            data-path=`/${prefixAdmin}/products-category/detail`
+        )
+    script(src="/admin/js/statusDetail.js")

@@ -1,0 +1,22 @@
+header.header
+    .container-fluid
+        .row.align-items-center
+            .col-3
+                .inner-logo
+                    a(href=`/${prefixAdmin}/dashboard`) ADMIN
+
+            .col-9
+                div(class="text-right")
+                    select(id="language"  onchange="changeLanguage(this.value)")
+                        option(value="vi" class="VI") Tiếng Việt
+                        option(value="en" class="EN") English
+                    a(
+                        href=`/${prefixAdmin}/my-account`
+                        class="btn btn-primary btn-sm mr-2"
+                    ) #{user.fullName}
+                    a(
+                        href=`/${prefixAdmin}/auth/logout`
+                        class="btn btn-danger btn-sm"
+                    ) Đăng xuất
+
+    script(src="/admin/js/changeLanguage.js")
