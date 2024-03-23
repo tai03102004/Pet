@@ -74,6 +74,12 @@ app.locals.prefixAdmin = systemConfig.prefixAdmin;
 // local moment
 app.locals.moment = moment;
 
+app.get("*", (req, res) => {
+    res.render(("client/pages/errors/404.pug"),{
+        pageTitle: "404 Not Found",
+    })
+});
+
 app.listen(port ,()=>{
     console.log(`listening on port ${port}`);
 });

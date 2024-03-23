@@ -1,0 +1,13 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/product-layoutHome.pug
+
+block main
+    .container.my-3
+        if products.length > 0
+            .row
+                .col-12
+                    +box-head("Kết quả tìm kiếm: ")
+            +product-grid(products)
+        else 
+            h3(style="text-align : center; margin-top : 30px") Không có sản phẩm mà bạn tìm kiếm

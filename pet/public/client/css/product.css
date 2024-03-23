@@ -11,8 +11,22 @@ body {
     font-family: var(--font-1);
 }
 
+.button {
+    text-decoration: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #003459;
+    color: #F0F0F0;
+    padding: 10px 20px;
+    border-radius: 44px;
+    border: none;
+}
+.button i {
+    margin-left: 8px;
+}
+
 .container {
-    width: 1180px;
+    width: 1200px;
     margin : 0 auto;
 }
 
@@ -295,7 +309,7 @@ body {
     .section-1 .inner-share {
         margin-left : 10px;
     }
-    .section-2 .inner-wrap .inner-title h2 {
+    .section-1 .inner-wrap .inner-title h2 {
         font-size: 21px;
     }
 }
@@ -737,3 +751,4 @@ body {
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
+

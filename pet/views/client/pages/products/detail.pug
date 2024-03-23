@@ -1,0 +1,125 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+
+block main 
+    .product-info
+        .container 
+            .product-info__wrap 
+                .product-info__left 
+                    .product-info__images-main 
+                        img(src=product.thumbnail)
+                    .product-info__images-thumb
+                        //- img(src="assets/images/peg-1.png")
+                        //- img(src="assets/images/Peg-2.png")
+                        //- img(src="assets/images/Peg-3.png")
+                        //- img(src="assets/images/Peg-4.png")
+                        //- img(src="assets/images/Peg-5.png")
+
+                .product-info__right 
+                    //- Bredcrumb
+
+                    .breadcrumb 
+                        ul.breadcrumb__list 
+                            li.breadcrumb__item 
+                                a(href="/" class="breadcrumb__link") Trang chủ
+                            li.breadcrumb__item 
+                                a(href="/products" class="breadcrumb__link") Chó
+                            li.breadcrumb__item 
+                                a(href="#" class="breadcrumb__link") Chó nhỏ
+                            li.breadcrumb__item 
+                                a(href="/products" class="breadcrumb__link") #{product.title}
+                    
+                    //- End Bredcrumb
+                    h1.product-info__title #{product.title}
+                    if (product.category)
+                        div(class="inner-category")
+                            span Danh mục: 
+                            a(href=`/products/${product.category.slug}`) #{product.category.title}
+                    .product-info__price #{product.price}
+                    .product-info__buttons  
+                        a(href="#" class="buttons buttons--primary") Liên hệ
+                        a(href="#" class="buttons") <i class="fa-regular fa-comment-dots"></i> Chat với Monito 
+                        form(
+                            action=`/cart/add/${product.id}`
+                            method="POST"
+                            style="display : flex; align-items : center"
+                        )   
+                            button(
+                                type="submit"
+                                class="buttons"
+                            )   
+                                img(src="/client/images/cart.svg") 
+
+                    .product-info__table    
+                        table 
+                            tbody 
+                                tr 
+                                    td SKU 
+                                    td #1000078
+                                tr 
+                                    td Giống
+                                    td #{product.gender}
+                                tr 
+                                    td Kích thước 
+                                    td Nhỏ
+                                tr 
+                                    td Màu sắc 
+                                    td Nâu đỏ
+                                tr 
+                                    td Còn lại
+                                    td <span>#{product.stock}</span> sản phẩm
+                                tr 
+                                    td Mô tả 
+                                    td Giống thuần chủng Shih Tzu. Cấu trúc cơ thể 
+                                        | tốt. Với chứng chỉ MKA và Microchip. Cha từ 
+                                        | dòng dõi vô địch
+                    .box-share 
+                        .box-share__label <i class="fa-solid fa-share-nodes"></i> Chia sẻ:
+                        ul.box-share__list 
+                            li.box-share__item 
+                                a(href="#" target="_blank" class="box-share__link") <i class="fa-brands fa-facebook"></i>
+                            li.box-share__item 
+                                a(href="#" target="_blank" class="box-share__link") <i class="fa-brands fa-twitter"></i>
+                            li.box-share__item 
+                                a(href="#" target="_blank" class="box-share__link") <i class="fa-brands fa-instagram"></i>
+                            li.box-share__item 
+                                a(href="#" target="_blank" class="box-share__link") <i class="fa-brands fa-youtube"></i>
+
+                
+
+    //- End Product Info
+
+    .section-2
+        .container
+            .box-head
+                .box-head__left
+                    .box-head__sub-title Có gì mới?
+                    .box-head__title Một số vật nuôi của chúng tôi
+                .box-head__right
+                    a(href="#" class="button")
+                        | Xem thêm 
+                        i(class="fa-solid fa-chevron-right")
+                
+            .section-2__wrap
+                each pet in pets
+                    .section-2__item
+                        .section-2__image
+                            a(href=`/products/detail/${pet.slug}`)
+                                img(src=pet.thumbnail alt=pet.title)
+                        .section-2__content
+                            h3.section-2__title
+                                a(href=`/products/detail/${pet.slug}` style="text-decoration: none") #{pet.title}
+                            .section-2__info
+                                .section-2__info-item Giống: <span>#{pet.gender}</span>
+                                .section-2__info-item Tuổi: <span>#{pet.age}</span>
+                            .section-2__price #{pet.price}
+            .section-2__button-button
+                a(href="#" class="button") Xem thêm 
+                    <i class="fa-solid fa-chevron-right"></i>
+
+    link(rel="stylesheet", href="/client/css/detail.css")
+    link(rel="stylesheet", href="/client/css/home.css")
+    link(rel="stylesheet", href="/css/alert.css")
+    script(src="/client/js/untils.js") 
+    //- End Section 2 

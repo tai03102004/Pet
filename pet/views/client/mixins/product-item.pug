@@ -2,11 +2,11 @@
 mixin product-item(pet)
     .section-2__item.section-2__item--three
         .section-2__image
-            a(href="#")
+            a(href=`/products/detail/${pet.slug}`)
                 img(src=pet.thumbnail alt=pet.title)
         .section-2__content
             h3.section-2__title
-                a(href="#" style="text-decoration: none") #{pet.title}
+                a(href=`/products/detail/${pet.slug}` style="text-decoration: none") #{pet.title}
             .section-2__info
                 .section-2__info-item Giống: <span>#{pet.gender}</span>
                 .section-2__info-item Tuổi: <span>#{pet.age}</span> tháng
