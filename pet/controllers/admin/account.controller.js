@@ -3,7 +3,7 @@ const Role = require('../../models/roles.model');
 const md5 = require("md5");
 const systemConfig = require('../../config/system');
 const moment = require('moment');
-
+ 
 module.exports.index = async(req,res) => {
     const records = await Account.find({
         deleted : false,

@@ -16,3 +16,5 @@ if (prices) {
     const formattedPrice = numberPrice.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     prices.innerHTML = `${formattedPrice} <span>đ</span>`;
 }
+
+

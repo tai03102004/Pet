@@ -11,7 +11,7 @@ module.exports.index = async(req,res) => {
         records: records
     })
 }
-
+ 
 // [GET]/admin/roles/create
 module.exports.create = async(req, res) => {
     res.render("admin/pages/roles/create.pug", {
@@ -79,6 +79,7 @@ module.exports.permissions = async(req,res) => {
 module.exports.permissionsPatch = async(req,res) => {
 
     // fontend sẽ chuyển về String nên BackEnd phải chuyển lại về mảng
+    console.log(req.body.permissions);
     const permissions = JSON.parse(req.body.permissions);
 
     for (const item of permissions) {

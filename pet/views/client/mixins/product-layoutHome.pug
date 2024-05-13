@@ -1,16 +1,15 @@
 include product-item.pug
 
-
 mixin product-grid(products) 
     .section-2__wrap
         each pet in products
             .section-2__item
                 .section-2__image
-                    a(href="/products")
+                    a(href=`/products/detail/${pet.slug}`)
                         img(src=pet.thumbnail alt=pet.title)
                 .section-2__content
                     h3.section-2__title
-                        a(href="/products" style="text-decoration: none") #{pet.title}
+                        a(href=`/products/detail/${pet.slug}` style="text-decoration: none") #{pet.title}
                     .section-2__info
                         .section-2__info-item Giống: <span>#{pet.gender}</span>
                         .section-2__info-item Tuổi: <span>#{pet.age}</span>

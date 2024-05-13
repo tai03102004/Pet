@@ -170,7 +170,7 @@ if (buttonsDelete.length > 0){
             }
         });
     });
-}
+} 
 
 // End Change Status (Delete)
 
