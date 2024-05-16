@@ -10,14 +10,14 @@ module.exports.login = async(req,res) => {
         { deleted: false }
     );
     res.render("client/pages/auth/login", {
-        pageTitle: "Đăng ký",
+        pageTitle: "Đăng nhập",
         user : user,
     });
 }
 
 // [POST] /auth/login
 module.exports.loginPost = async(req,res) => {
-    try {
+    // try {
         const name_id = req.body.name_id;
         const password = req.body.password;
         const account = await Auth.findOne(
@@ -50,13 +50,13 @@ module.exports.loginPost = async(req,res) => {
             res.cookie("tokenUser",account.tokenUser,{ expires: new Date(Date.now() + 90000000)});
             
             // Cập nhật lại trang thái hiện tại (online)
-            await Auth.updateOne({
-                _id: account.id
-            },
+            // await Auth.updateOne({
+            //     _id: account._id
+            // },
             //     {
             //     statusOnline: "online",
             // }
-            )
+            // )
 
             // _io.once('connection',(socket) => {
             //     socket.broadcast.emit("SERVER_RETURN_USER_ONLINE",user.id);
@@ -67,7 +67,7 @@ module.exports.loginPost = async(req,res) => {
             await Cart.updateOne({
                 _id : req.cookies.cartId,
             },{
-                user_id : account.id
+                user_id : account._id
             })
             res.redirect("/");
             return;
@@ -78,11 +78,11 @@ module.exports.loginPost = async(req,res) => {
             return;
         }
 
-    } catch(err) {
-        req.flash("error", "Đăng nhập không thành công");
-        res.redirect("back");
-    }
-} 
+    // } catch(err) {
+    //     req.flash("error", "Đăng nhập không thành công");
+    //     res.redirect("back");
+    // }
+}  
 // [GET] /auth/signup
 module.exports.signup = async(req,res) => {
     res.render("client/pages/auth/signup", {
