@@ -11,13 +11,15 @@ module.exports.cartId = async(req,res,next) => {
             expires : new Date(Date.now() + expiresTime)
         })
     } else {
+        
         const cart = await Cart.findOne({
             _id : req.cookies.cartId,
         });
-        cart.totalQuantity = cart.products.reduce((sum,product) => sum + product.quantity,0);
+        if (cart) {
+            cart.totalQuantity = cart.products.reduce((sum,product) => sum + product.quantity,0);
 
-        res.locals.miniCart = cart;
-
+            res.locals.miniCart = cart;
+        }
     }
     next();
 }
